@@ -8,11 +8,13 @@ As in the syllable and word level counterparts, the primary goal of this module 
 
 The pros in comparison with _syllable_ and _word_ level models include
 
-* __Mimicing of analytic languages:__ stem level splits words into the stem and the inflection suffix. This largely resembles the structure of an analytic language: it's basically a bunch of uninflectable words and postpositions. As a consequence, models that work well with analytic should work well with the . And due to English being the current _lingua franca_, these are plentiful.
+* __Mimicking of analytic languages:__ the stem level splits words into the stem and the inflection suffix. This largely resembles the structure of an analytic language: it's basically a bunch of uninflectable words and postpositions. As a consequence, models that work well with analytic languages should work well with stem level data as well. And due to English being the current _lingua franca_, these are plentiful.
+
+* __Word2Vec (probably) works like a charm__: due to the analytic-like structure, stem level is bound to yield a great _word2vec_ embedding, probably an even better one than at word level. Experiments can be done with taking out inflections, word separators and/or punctuation.
 
 Cons:
 
-* __Complex preprocessing:__ . Theoretically, this can be addressed with linguistic knowledge, but stuff like colloquialisms and new words make it unfeasible.
+* __Complex preprocessing:__ A stem is not well defined for arbitrary datasets. It's not sure whether exception cases are rare enough not to screw up everything. Moreover, a plethora of options for heuristics are possible, which complicates the experimentation process. Linguistic knowledge is also relatively useless if dataset/vocabulary invariance is the objective.
 
 
 ## Approach
