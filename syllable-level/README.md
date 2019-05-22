@@ -1,8 +1,8 @@
 # Syllable Level Models for Agglutinative Languages
 
-This folder is dedicated for the syllable-level solutions for agglutinative language models.
+This folder is dedicated for the __syllable-level__ solutions for agglutinative language models.
 
-As , the primary goal of this module is to implement decent text generation
+As in the _stem_ and _word_ level counterparts, the primary goal of this module is to implement decent text generation.
 
 ## Why go with syllable level?
 

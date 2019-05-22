@@ -1,8 +1,8 @@
 # Stem Level Models for Agglutinative Languages
 
-This folder is dedicated for the stem-level solutions for agglutinative language models.
+This folder is dedicated for the __stem-level__ solutions for agglutinative language models.
 
-As in the syllable and word level counterparts, the primary goal of this module is to implement decent text generation.
+As in the _syllable_ and _word_ level counterparts, the primary goal of this module is to implement decent text generation.
 
 ## Why go with stem level?
 
