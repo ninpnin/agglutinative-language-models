@@ -25,9 +25,9 @@ Cons:
 
 ### Embedding 
 
-## Things to Experiment with
+## Things to experiment with
 
-### Syllable Embeddings
+### Syllable embeddings
 
 The number of syllables for a syllable level model is so high that inputting plain class vectors is unfeasible. Therefore, the binary class vectors of syllables have to be embedded into a subspace.
 
@@ -38,12 +38,12 @@ With decent preprocessing, it might be possible to extend the Word2Vec methodolo
 
 Some potential problems to tackle include what to do with the most common syllables, as well as how to address word borders and linebreaks.
 
-### Syllable Set Size
+### Syllable set size
 
 
-### Neural Network Structure
+### Neural network structure
 
-#### Type of Neural Network
+#### Type of the neural network
 
 
 

@@ -25,21 +25,20 @@ Cons:
 
 ### Embedding 
 
-## Things to Experiment with
+## Things to experiment with
 
-### Defining 'Word Stem'
+### Defining the concept 'stem'
 
 In the grammatical sense, the stem of a word is the invariable basic structure, while inflections are variable suffixes that convey grammatical information. Hence, the stem-level approach tries to split the word up into two pieces. However, the stem might be the only component.
 
 In order for the model to work, the definition of a stem does not need to match the grammatical definition. Instead, the broad grammatical logic of words that have variable endings works as a starting point for preprocessing. Different heuristics can be used and their performance can be compared.
 
-### Different Embeddings
+### Stem vocabulary size
 
-### Stem Vocabulary Size
+### Neural network structure
 
-### Neural Network Structure
+#### Type of the neural network
 
-#### Type of Neural Network
 
 
 
