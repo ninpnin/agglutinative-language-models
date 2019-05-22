@@ -18,7 +18,7 @@ The pros in comparison with _syllable_ and _word_ level models include
 
 Cons:
 
-* __Complex preprocessing:__ A stem is not well defined for arbitrary datasets. It's not sure whether exception cases are rare enough not to screw up everything. Moreover, a plethora of options for heuristics are possible, which complicates the experimentation process. Linguistic knowledge is also relatively useless if dataset/vocabulary invariance is the objective.
+* __Complex and unpredictable preprocessing:__ A stem is not well defined for arbitrary datasets. It's not sure whether exception cases are rare enough not to screw up everything. Moreover, a plethora of options for heuristics are possible, which complicates the experimentation process. Linguistic knowledge is also relatively useless if dataset/vocabulary invariance is the objective.
 
 
 ## Approach
