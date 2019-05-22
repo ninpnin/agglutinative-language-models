@@ -4,9 +4,9 @@ This folder is dedicated for the syllable-level solutions for agglutinative lang
 
 As , the primary goal of this module is to implement decent text generation
 
-## Pros and Cons
+## Why go with syllable level?
 
-The pros in comoparison with stem and word level models include
+The pros in comparison with _stem_ and _word_ level models include
 
 * __Easy and comprehensive representation of data:__ it is easy to convert any text into substrings or syllables, and if there are a sufficient number of them, nothing has to be excluded. Also, the trivial char-level representation exists as a subset of syllable level representation. These are true for pretty much any natural language dataset. 
 
