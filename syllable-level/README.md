@@ -2,15 +2,31 @@
 
 This folder is dedicated for the syllable-level solutions for agglutinative language models.
 
+As , the primary goal of this module is to implement decent text generation
+
+## Pros and Cons
+
+The pros in comoparison with stem and word level models include
+
+* __Easy and comprehensive representation of data:__ it is easy to convert any text into substrings or syllables, and if there are a sufficient number of them, nothing has to be excluded. Also, the trivial char-level representation exists as a subset of syllable level representation. These are true for pretty much any natural language dataset. 
+
+* __Reasonable number of classes:__ syllable level representations are very unlikely to have a crazy number of classes to try to guess from. The linear transformations from the hidden state to the class space are tolerable, and there are tons of instances of each class in a reasonably large dataset.
+
+Cons:
+
+* __The need for longer RNN models:__ in terms of the number of the building blocks, syllable level representations are bound to be longer than their stem or word level counterparts. This inevitably leads to longer RNN chains that have more difficulties retaining information from _n_ characters ago.
+
+
 ## Approach
 
-### A
+### Embedding 
 
 ## Things to Experiment with
 
 ### Syllable Embeddings
 
-The number of syllables for a syllable level model is so high that inputting plain class vectors is unfeasible.
+The number of syllables for a syllable level model is so high that inputting plain class vectors is unfeasible. Therefore, the binary class vectors of syllables have to be embedded into a subspace.
+
 
 #### Word2Vec – Syllable2Vec?
 
@@ -21,5 +37,9 @@ Some potential problems to tackle include what to do with the most common syllab
 ### Syllable Set Size
 
 
-### RNN chain length
+### Neural Network Structure
+
+#### Type of Neural Network
+
+
 
