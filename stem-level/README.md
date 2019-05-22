@@ -1,7 +1,7 @@
 # Stem Level Models for Agglutinative Languages
 
 ```
-satunnai-s generoi-tua teksti-ä
+satunnaisgeneroi-tua teksti-ä
 ```
 
 This folder is dedicated for the __stem-level__ solutions for agglutinative language models.

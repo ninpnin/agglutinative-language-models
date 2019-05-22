@@ -1,7 +1,7 @@
 # Syllable Level Models for Agglutinative Languages
 
 ```
-sa-tun-nais ge-ne-roi-tu-a teks-ti-ä
+sa-tun-nais-ge-ne-roi-tu-a teks-ti-ä
 ```
 
 This folder is dedicated for the __syllable-level__ solutions for agglutinative language models.
