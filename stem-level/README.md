@@ -1,5 +1,9 @@
 # Stem Level Models for Agglutinative Languages
 
+```
+satunnai-s generoi-tua teksti-ä
+```
+
 This folder is dedicated for the __stem-level__ solutions for agglutinative language models.
 
 As in the _syllable_ and _word_ level counterparts, the primary goal of this module is to implement decent text generation.
@@ -23,19 +27,15 @@ Cons:
 
 ## Things to Experiment with
 
-### Syllable Embeddings
+### Defining 'Word Stem'
 
-The number of syllables for a syllable level model is so high that inputting plain class vectors is unfeasible. Therefore, the binary class vectors of syllables have to be embedded into a subspace.
+In the grammatical sense, the stem of a word is the invariable basic structure, while inflections are variable suffixes that convey grammatical information. Hence, the stem-level approach tries to split the word up into two pieces. However, the stem might be the only component.
 
+In order for the model to work, the definition of a stem does not need to match the grammatical definition. Instead, the broad grammatical logic of words that have variable endings works as a starting point for preprocessing. Different heuristics can be used and their performance can be compared.
 
-#### Word2Vec – Syllable2Vec?
+### Different Embeddings
 
-With decent preprocessing, it might be possible to extend the Word2Vec methodology to syllables. This would provide a nice way to 
-
-Some potential problems to tackle include what to do with the most common syllables, as well as how to address word borders and linebreaks.
-
-### Syllable Set Size
-
+### Stem Vocabulary Size
 
 ### Neural Network Structure
 
