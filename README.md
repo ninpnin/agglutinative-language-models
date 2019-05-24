@@ -54,6 +54,6 @@ siivoan
 All of the solutions are implemented as an LSTM neural network in keras.
 
 ![The stucture of an LSTM and a GRU cell](https://isaacchanghau.github.io/img/deeplearning/lstmgru/lstmandgru.png)
-The task is 
+
 
 
