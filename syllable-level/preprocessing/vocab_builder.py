@@ -1,5 +1,6 @@
 import numpy as np
 import re
+from math import log
 
 def custom_count(s1,s2):
 	counter = 0
@@ -43,7 +44,7 @@ def naive_syl_search(s):
 
 	d = syllables.items()
 	d = sorted(d, key=lambda x: x[1], reverse=True)
-	d = d[:5000]
+	d = d[:8000]
 
 	return d
 
@@ -70,6 +71,7 @@ def address_subsyls(s, syl_tuples):
 
 def syllablize(word, all_syls):
 	possible = possible_syls(word)
+	print(possible)
 	possible = set(possible) & set(all_syls)
 	return syllable_dijkstra(word, list(possible))
 
@@ -118,7 +120,7 @@ def syllable_dijkstra(word, syls):
 def generate_vocab(in_filename):
 	print("Generate vocab...")
 	print("Done!")
-	f = open("whole_dataset.txt","r").read().lower()
+	f = open(in_filename,"r").read().lower()
 	f = re.sub("[^a-zäö] \n", "", f)
 	f = f.replace("\n", " ")
 	f = f.replace(",", " ,")
@@ -137,7 +139,8 @@ def generate_vocab(in_filename):
 	for ix, word in enumerate(s):
 		distance, split_str = syllablize(word, syls_keys)
 		#print("Syllables needed", distance, split_str, len(word)/distance)
-
+		if distance == 0:
+			print(split_str)
 		split_str = split_str.split("-")
 		for syl in split_str:
 			if syl in used_syls:
@@ -147,20 +150,67 @@ def generate_vocab(in_filename):
 
 		if ix % 1000 == 0:
 			print("Index", ix, ", syls", len(used_syls))
-			d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:50]
-			print(d_trunc)
+			#d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:50]
+			#print(d_trunc)
 
-	return []
+	d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:2200]
+	
+	'''
+	for best_n in range(0, 8000, 100):
+		d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:best_n]
+		
+		syls_keys = []
+
+		for letter in f:
+			if letter not in syls_keys:
+				 syls_keys.append(letter)
+
+		total_syls = 0
+		total_len = 0
+		for syl, number in d_trunc:
+			syls_keys.append(syl)
+
+		for ix, word in enumerate(s[:50000]):
+			distance, split_str = syllablize(word, syls_keys)
+			#print(split_str, distance)
+			if distance > 0:
+				total_syls += distance
+				total_len += len(word)
+
+		vocab_len = len(syls_keys)
+		print("BEST", best_n)
+		avg = total_len / total_syls
+		print(avg, log(vocab_len) * (1/avg))
+
+
+	'''
+	return d_trunc
 
 def write_vocab(vocab, out_filename):
 	print("Write vocab...")
+	#print(vocab)
+
+	f = open(out_filename, "w")
+	s = ""
+	for v in vocab:
+		s += ";" + v
+
+	f.write(s[1:])
+	f.close()
 	print("Done!")
 
 def main():
-	in_file = "data.txt"
+	in_file = "whole_dataset.txt"
 	vocab_file = "vocab.txt"
 	vocab = generate_vocab(in_file)
-	write_vocab(vocab, vocab_file)
+
+	syllables = []
+	print(vocab)
+	for syllable, number in vocab:
+		print("SYLL", syllable)
+		syllables.append(syllable)
+
+	write_vocab(syllables, vocab_file)
 
 
 if __name__ == "__main__":
