@@ -87,11 +87,21 @@ def syllable_dijkstra(word, syls):
 
 		return curr_interlap
 
+	done = []
 	subwords = list(interlap)
-	for i in range(min(6,len(word))):
+	for i in range(len(word)):
+
+		filtered_subwords = []
 		for subword in subwords:
-			if subword.replace("-","") == word:
+			subword_r = subword.replace("-","")
+			if subword_r == word:
 				return i + 1, subword
+			elif subword_r not in done:
+				filtered_subwords.append(subword)
+				done.append(subword_r)
+
+		subwords = filtered_subwords
+
 
 		#print(subwords)
 		new_subwords = []
@@ -126,7 +136,7 @@ def generate_vocab(in_filename):
 	used_syls = {}
 	for ix, word in enumerate(s):
 		distance, split_str = syllablize(word, syls_keys)
-		#print("Syllables needed", distance)
+		#print("Syllables needed", distance, split_str, len(word)/distance)
 
 		split_str = split_str.split("-")
 		for syl in split_str:
