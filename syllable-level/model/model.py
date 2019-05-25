@@ -9,7 +9,13 @@ from keras.utils import np_utils
 import keras
 from math import log
 
+DEBUG = True
+def debug(*args):
+	if DEBUG:
+		debug(*args)
+
 # prefix of the data path
+
 prefix = ""
 
 # Toy data for quick testing
@@ -24,12 +30,12 @@ else:
 	X = np.load(prefix + "keras-model/X.npy")[:,:,0]
 	Y = np.load(prefix + "keras-model/Y.npy")
 
-print("Convert labels into categorical data...")
+debug("Convert labels into categorical data...")
 Y = np_utils.to_categorical(Y)
-print("Done.")
-#print(X.shape, Y.shape, y.shape)
+debug("Done.")
+#debug(X.shape, Y.shape, y.shape)
 
-print(Y)
+debug(Y)
 
 
 
@@ -45,7 +51,7 @@ if not random_embedding:
 	embedding_matrix = np.concatenate((embedding_matrix, np.random.rand(1,128)), axis=0)
 	vocab_size = len(embedding_matrix)
 
-	print(embedding_matrix.shape, vocab_size)
+	debug(embedding_matrix.shape, vocab_size)
 else:
 	embedding_matrix = np.random.rand(syllable_num, 128)
 
