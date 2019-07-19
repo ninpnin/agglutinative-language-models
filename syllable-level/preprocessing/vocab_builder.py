@@ -18,7 +18,12 @@ print(custom_count("jaja", "aja"))
 print(custom_count("iiii", "iii"))
 print(custom_count("iiiii", "iii"))
 #math.log(0)
+
+# Max length of an individual syllable
 MAX_LEN = 4
+
+# Get possbile syllables in a word, every substring
+# where len < MAX_LEN
 def possible_syls(word, allow_multiple=False):
 	syls = []
 	l = len(word)
@@ -30,12 +35,26 @@ def possible_syls(word, allow_multiple=False):
 	return syls
 
 
+# Find all possible syllables within each word in a string
 def naive_syl_search(s):
 	split = s.split()
 
+	pobbible_by_word = {}
+
 	syllables = {}
-	for word in split:
-		possible = list(set(possible_syls(word, allow_multiple=True)))
+	for ix, word in enumerate(split):
+		if ix % 1000 == 0:
+			print(ix)
+		possible = None
+		if True:
+			if word in pobbible_by_word:
+				possible = pobbible_by_word[word]
+			else:
+				possible = list(set(possible_syls(word, allow_multiple=True)))
+				pobbible_by_word[word] = possible
+		else:
+			possible = list(set(possible_syls(word, allow_multiple=True)))
+
 		for syl in possible:
 			if syl in syllables:
 				syllables[syl] = syllables[syl] + custom_count(word, syl)
@@ -71,7 +90,7 @@ def address_subsyls(s, syl_tuples):
 
 def syllablize(word, all_syls):
 	possible = possible_syls(word)
-	print(possible)
+	#print(possible)
 	possible = set(possible) & set(all_syls)
 	return syllable_dijkstra(word, list(possible))
 
@@ -148,11 +167,13 @@ def generate_vocab(in_filename):
 			else:
 				used_syls[syl] = 1
 
-		if ix % 1000 == 0:
+		if ix % 100 == 0:
 			print("Index", ix, ", syls", len(used_syls))
 			#d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:50]
 			#print(d_trunc)
 
+
+	# Take N most common syllables
 	d_trunc = sorted(used_syls.items(), key=lambda x: x[1], reverse=True)[:2200]
 	
 	'''
@@ -186,6 +207,7 @@ def generate_vocab(in_filename):
 	'''
 	return d_trunc
 
+# Print vocabulary to a file
 def write_vocab(vocab, out_filename):
 	print("Write vocab...")
 	#print(vocab)
@@ -199,9 +221,10 @@ def write_vocab(vocab, out_filename):
 	f.close()
 	print("Done!")
 
+
 def main():
-	in_file = "whole_dataset.txt"
-	vocab_file = "vocab.txt"
+	in_file = "fi-books.txt"
+	vocab_file = "vocab_" + in_file
 	vocab = generate_vocab(in_file)
 
 	syllables = []
